@@ -1,0 +1,2 @@
+# Photos of animals on the memorial wall go in this folder.
+# After adding a file here, point the entry's "photo" field at it in data/memorials.json.

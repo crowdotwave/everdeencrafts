@@ -1,0 +1,32 @@
+{
+  "_readme": [
+    "HOW TO ADD AN ANIMAL TO THE WALL",
+    "When someone sends the form on memorial.html, the message arrives in your email.",
+    "Nothing appears on the site until you add it here, so you always get the last word.",
+    "",
+    "Add one entry to the 'entries' list below:",
+    "  id     (required) a short unique tag, e.g. 'bella-2024'. Never reuse or change it,",
+    "                    because it is what keeps a visitor's lit candle attached to the right animal.",
+    "  name   (required) the animal's name",
+    "  years  (optional) e.g. '2011 - 2024'",
+    "  words  (optional) what the person wrote, in their words",
+    "  from   (optional) the person's name, e.g. 'the Nguyen family'",
+    "  photo  (optional) path to a file you saved in assets/img/memorial/",
+    "  alt    (optional) short plain description of the photo, for screen readers",
+    "",
+    "EXAMPLE",
+    "  {",
+    "    \"id\": \"bella-2024\",",
+    "    \"name\": \"Bella\",",
+    "    \"years\": \"2011 - 2024\",",
+    "    \"words\": \"She met me at the door every single day for thirteen years.\",",
+    "    \"from\": \"Sam\",",
+    "    \"photo\": \"assets/img/memorial/bella.jpg\",",
+    "    \"alt\": \"A tan terrier asleep in a patch of sun\"",
+    "  }",
+    "",
+    "Newest first. Delete this _readme block whenever you like."
+  ],
+
+  "entries": []
+}

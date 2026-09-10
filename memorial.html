@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memorial Wall — Everdeen Crafts</title>
+<meta name="description" content="A free memorial wall for beloved animals. Add your companion, say their name, and tell people about them.">
+<meta name="theme-color" content="#16281f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__name">Everdeen</span>
+      <span class="brand__sub">Crafts</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="gallery.html">The Work</a>
+      <a class="nav__link" href="memorial.html" aria-current="page">Memorial Wall</a>
+      <a class="nav__link" href="resources.html">Grief Support</a>
+      <a class="nav__link" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="pagehead">
+  <canvas class="pagehead__canvas" data-particles="sparse" aria-hidden="true"></canvas>
+  <div class="shell shell--narrow">
+    <span class="eyebrow eyebrow--light">In memory</span>
+    <h1>The memorial <em>wall</em></h1>
+    <p class="lede">
+      Add your animal, say their name, and tell people about them.
+      There is no charge, and there is no time limit on missing someone.
+    </p>
+  </div>
+</section>
+
+<!-- ================= THE WALL ================= -->
+<section class="section section--white">
+  <div class="shell">
+    <div class="memorial-grid" data-memorials></div>
+  </div>
+</section>
+
+<!-- ================= ADD AN ANIMAL ================= -->
+<section class="section section--mist" id="add">
+  <div class="shell shell--narrow">
+    <div class="section-head section-head--center">
+      <span class="eyebrow reveal">Add to the wall</span>
+      <h2 class="reveal" data-delay="1">Tell us about them</h2>
+      <p class="reveal" data-delay="2" style="margin-inline:auto">
+        Every submission is read by Katrina before it goes up.
+      </p>
+    </div>
+
+    <!-- Shown only while the form endpoint is still unset. -->
+    <div class="form-note reveal" data-setup-notice style="display:none;margin-bottom:var(--gap)">
+      <p>
+        <strong>This form isn't connected yet.</strong>
+        Katrina needs to create a free form at
+        <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">formspree.io</a>
+        and paste the endpoint into the <code>data-endpoint</code> attribute of this form in
+        <code>memorial.html</code>. Until then, submissions are disabled so that nothing gets lost.
+      </p>
+    </div>
+
+    <form class="form reveal" data-delay="3"
+          data-memorial-form
+          data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          novalidate>
+
+      <!-- Spam trap, hidden from people -->
+      <div class="gate" aria-hidden="true">
+        <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <input type="hidden" name="_subject" value="New memorial wall submission">
+
+      <div class="field field--row">
+        <div class="field">
+          <label class="label" for="animal">Their name</label>
+          <input class="input" id="animal" name="animal_name" type="text" required autocomplete="off">
+        </div>
+        <div class="field">
+          <label class="label" for="years">Years <span>(optional)</span></label>
+          <input class="input" id="years" name="years" type="text" placeholder="2011 - 2024" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="words">What you'd like people to know</label>
+        <textarea class="textarea" id="words" name="words" required
+                  placeholder="Anything at all. How you met, what they did that nobody else did, what you miss."></textarea>
+        <p class="hint">Your words go up exactly as you write them.</p>
+      </div>
+
+      <div class="field field--row">
+        <div class="field">
+          <label class="label" for="from">Your name</label>
+          <input class="input" id="from" name="your_name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="label" for="email">Your email</label>
+          <input class="input" id="email" name="email" type="email" required autocomplete="email">
+          <p class="hint">Never published.</p>
+        </div>
+      </div>
+
+      <div class="form-note">
+        <p>
+          <strong>Photos.</strong> Reply to Katrina's email with a picture attached and she'll
+          add it alongside your words. Photos can't be attached to this form directly.
+        </p>
+      </div>
+
+      <div class="field">
+        <label class="label" style="display:flex;gap:.7rem;align-items:flex-start;text-transform:none;letter-spacing:.02em;font-size:.92rem;color:var(--ink-soft)">
+          <input type="checkbox" name="consent" required style="margin-top:.35rem;accent-color:var(--sage-deep)">
+          <span>I'm happy for this to be published on the memorial wall.</span>
+        </label>
+      </div>
+
+      <div class="form-status" data-status role="status" aria-live="polite"></div>
+
+      <button class="btn btn--solid btn--full" type="submit"><span>Add to the wall</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= GRIEF SUPPORT POINTER ================= -->
+<section class="section section--tight band">
+  <canvas class="band__canvas" data-particles="band" aria-hidden="true"></canvas>
+  <div class="shell shell--narrow">
+    <span class="eyebrow eyebrow--light reveal">If today is heavy</span>
+    <h2 class="reveal" data-delay="1">There are people who <em>will listen</em></h2>
+    <p class="lede reveal" data-delay="2" style="max-width:50ch;margin-inline:auto">
+      Free hotlines, support groups and counselling for pet loss, including one right here in Ontario.
+    </p>
+    <div class="hero__actions reveal" data-delay="3" style="margin-top:var(--gap-md)">
+      <a class="btn btn--light" href="resources.html"><span>Grief support</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="brand__name" style="font-family:var(--serif);letter-spacing:.18em;text-transform:uppercase;display:block">Everdeen</span>
+        <span class="brand__sub" style="display:block;font-size:.53rem;letter-spacing:.44em;text-transform:uppercase;margin-top:.42rem">Crafts</span>
+        <p style="margin-top:var(--gap-sm)">Kitchener, Ontario</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/everdeencrafts" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+              <circle cx="12" cy="12" r="4.2"/>
+              <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">The Work</a></li>
+          <li><a href="memorial.html">Memorial Wall</a></li>
+          <li><a href="resources.html">Grief Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Made with</h4>
+        <ul class="footer__links">
+          <li>Animal ashes, fur, whiskers</li>
+          <li>Human ashes</li>
+          <li>Breast milk</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>&copy; <span data-year>2026</span> Everdeen Crafts</span>
+      <span>Kitchener, Ontario, Canada</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/memorial.js" defer></script>
+</body>
+</html>

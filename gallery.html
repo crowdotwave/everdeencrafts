@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Work — Everdeen Crafts</title>
+<meta name="description" content="Memorial resin pieces made by Everdeen Crafts in Kitchener, Ontario.">
+<meta name="theme-color" content="#16281f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__name">Everdeen</span>
+      <span class="brand__sub">Crafts</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="gallery.html" aria-current="page">The Work</a>
+      <a class="nav__link" href="memorial.html">Memorial Wall</a>
+      <a class="nav__link" href="resources.html">Grief Support</a>
+      <a class="nav__link" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="pagehead">
+  <canvas class="pagehead__canvas" data-particles="sparse" aria-hidden="true"></canvas>
+  <div class="shell shell--narrow">
+    <span class="eyebrow eyebrow--light">Gallery</span>
+    <h1>The <em>work</em></h1>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="shell">
+    <div class="filters" data-gallery-filters></div>
+    <div class="grid" data-gallery data-lightbox></div>
+  </div>
+</section>
+
+<section class="section section--tight band">
+  <canvas class="band__canvas" data-particles="band" aria-hidden="true"></canvas>
+  <div class="shell shell--narrow">
+    <h2 class="reveal">Something in mind?</h2>
+    <p class="lede reveal" data-delay="1" style="max-width:48ch;margin-inline:auto">
+      Commissions start with a message.
+    </p>
+    <div class="hero__actions reveal" data-delay="2" style="margin-top:var(--gap)">
+      <a class="btn btn--light" href="index.html#contact"><span>Get in touch</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="brand__name" style="font-family:var(--serif);letter-spacing:.18em;text-transform:uppercase;display:block">Everdeen</span>
+        <span class="brand__sub" style="display:block;font-size:.53rem;letter-spacing:.44em;text-transform:uppercase;margin-top:.42rem">Crafts</span>
+        <p style="margin-top:var(--gap-sm)">Kitchener, Ontario</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/everdeencrafts" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+              <circle cx="12" cy="12" r="4.2"/>
+              <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">The Work</a></li>
+          <li><a href="memorial.html">Memorial Wall</a></li>
+          <li><a href="resources.html">Grief Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Made with</h4>
+        <ul class="footer__links">
+          <li>Animal ashes, fur, whiskers</li>
+          <li>Human ashes</li>
+          <li>Breast milk</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>&copy; <span data-year>2026</span> Everdeen Crafts</span>
+      <span>Kitchener, Ontario, Canada</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/gallery.js" defer></script>
+</body>
+</html>

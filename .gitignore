@@ -1,0 +1,12 @@
+# Local editor and tooling config
+.claude/
+.impeccable/
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Scratch
+*.log
+node_modules/

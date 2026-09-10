@@ -1,0 +1,27 @@
+{
+  "_readme": [
+    "HOW TO ADD PHOTOS",
+    "1. Put image files into  assets/img/work/",
+    "2. Add one entry to the 'items' list below for each photo.",
+    "",
+    "FIELDS",
+    "  src      (required) path to the file, e.g. assets/img/work/ring.jpg",
+    "  category (required) one of the category ids listed above: animal, human, milk",
+    "  alt      (optional) short plain description of the photo, for screen readers",
+    "  caption  (optional) a few words shown when someone hovers the photo",
+    "  feature  (optional) set to true on ONE photo to use it in the big well on the home page",
+    "",
+    "EXAMPLE",
+    "  { \"src\": \"assets/img/work/oak-ring.jpg\", \"category\": \"animal\", \"alt\": \"A ring with fur set in clear resin\", \"caption\": \"Fur keepsake\" }",
+    "",
+    "Newest first looks best. Delete this _readme block whenever you like."
+  ],
+
+  "categories": [
+    { "id": "animal", "label": "Animal Companions" },
+    { "id": "human",  "label": "Human Memorial" },
+    { "id": "milk",   "label": "Breast Milk" }
+  ],
+
+  "items": []
+}
