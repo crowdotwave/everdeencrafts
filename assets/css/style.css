@@ -282,7 +282,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   z-index: 100;
-  transition: background 0.55s var(--ease), box-shadow 0.55s var(--ease), height 0.55s var(--ease);
+  /* Background and shadow only: animating height here would lay out the
+     bar on every frame of the transition. The colour shift carries the state. */
+  transition: background 0.55s var(--ease), box-shadow 0.55s var(--ease);
 }
 .nav__inner {
   width: 100%;
@@ -344,7 +346,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 1px 0 var(--sage-pale);
-  height: 70px;
 }
 .nav.is-solid .brand__name { color: var(--forest-deep); }
 .nav.is-solid .brand__sub  { color: var(--sage-deep); }
@@ -916,9 +917,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .form-note {
   background: var(--sage-mist);
-  border-left: 2px solid var(--sage);
-  padding: 1.1rem 1.35rem;
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border: 1px solid var(--sage-pale);
+  padding: 1.15rem 1.4rem;
+  border-radius: var(--radius-soft);
 }
 .form-note p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
 
