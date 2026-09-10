@@ -1,5 +1,5 @@
 /* =========================================================
-   Everdeen Crafts — memorial wall
+   Everdeen Crafts: memorial wall
    Renders approved entries from data/memorials.json, handles the
    "light a candle" keepsake (stored on the visitor's own device),
    and posts new submissions to Formspree for Katrina to approve.

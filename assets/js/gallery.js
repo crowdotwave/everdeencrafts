@@ -1,5 +1,5 @@
 /* =========================================================
-   Everdeen Crafts — gallery
+   Everdeen Crafts: gallery
    Reads data/gallery.json and fills any [data-gallery] grid.
    Optional: data-limit, data-lightbox, [data-gallery-filters],
    and [data-gallery-feature] for a single hero image well.

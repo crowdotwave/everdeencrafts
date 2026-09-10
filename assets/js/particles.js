@@ -1,5 +1,5 @@
 /* =========================================================
-   Everdeen Crafts — drifting forest light
+   Everdeen Crafts: drifting forest light
    Canvas particle field: slow pollen motes plus firefly pulses.
    Glow is drawn from a pre-rendered sprite so the per-frame cost
    stays low even with a few hundred particles.

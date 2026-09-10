@@ -1,5 +1,5 @@
 /* =========================================================
-   Everdeen Crafts — shared behaviour
+   Everdeen Crafts: shared behaviour
    Nav state, mobile menu, scroll reveals, tree parallax, year stamp.
    ========================================================= */
 (function () {
