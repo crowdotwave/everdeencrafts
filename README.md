@@ -117,19 +117,33 @@ everywhere.
 | --- | --- | --- |
 | `--forest-deep` | `#16281f` | Hero, banners, footer |
 | `--forest` | `#24402f` | Buttons, headings |
-| `--sage` | `#9caf88` | Accents, borders, icons |
+| `--sage` | `#9caf88` | Borders, marks, icons |
+| `--sage-ink` | `#5c7352` | Small sage text, so it stays readable |
 | `--sage-mist` | `#eef1e9` | Soft panel backgrounds |
 | `--cream` | `#faf9f5` | Page background |
 | `--gold` | `#d9c89e` | Firefly particles, italic accents |
 
+Every text colour on the site clears the WCAG AA contrast floor against the surface
+it actually sits on, checked against rendered colours rather than intended ones.
+That is why there are only two grey-green text weights: a third, fainter one cannot
+reach 4.5:1 on a cream background. Use `--sage` for decoration and `--sage-ink`
+whenever the sage is carrying words.
+
 Type is Cormorant Garamond for headings and Jost for everything else, both from
 Google Fonts.
+
+There are no small labels above headings anywhere. If a heading seems to need one,
+the heading needs rewriting instead.
 
 ## The particles
 
 `assets/js/particles.js` draws the drifting light. Any `<canvas>` with a
 `data-particles` attribute gets a field: `default` for the hero, `sparse` for page
-headers, `band` for the green bands.
+headers, `band` for the green bands, and `pale` for light sections.
+
+`pale` is a different animal. On a dark ground the motes add light; on cream there
+is no light left to add, so that preset lays darker pollen down instead and drops
+the fireflies, which only read as smudges on a pale surface.
 
 It is built to stay out of the way. Glow is drawn from one pre-rendered sprite
 rather than a fresh gradient per particle, fields stop animating when scrolled off
