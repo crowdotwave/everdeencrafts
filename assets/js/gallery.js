@@ -97,15 +97,24 @@
   function renderFilters() {
     var host = document.querySelector("[data-gallery-filters]");
     if (!host) return;
-    if (!state.items.length) { host.style.display = "none"; return; }
 
+    // Only categories that actually have pieces in them are offered.
+    var populated = state.categories.filter(function (c) {
+      return state.items.some(function (i) { return i.category === c.id; });
+    });
+
+    // A lone "Everything" pill is just noise, so the bar stays hidden
+    // until there are at least two categories to move between.
+    if (populated.length < 2) {
+      host.style.display = "none";
+      host.innerHTML = "";
+      state.active = "all";
+      return;
+    }
+    host.style.display = "";
     host.innerHTML = "";
-    var opts = [{ id: "all", label: "Everything" }].concat(state.categories);
 
-    opts.forEach(function (o) {
-      // Hide categories that have no pieces in them.
-      if (o.id !== "all" && !state.items.some(function (i) { return i.category === o.id; })) return;
-
+    [{ id: "all", label: "Everything" }].concat(populated).forEach(function (o) {
       var b = el("button", "filter" + (state.active === o.id ? " is-active" : ""), o.label);
       b.type = "button";
       b.addEventListener("click", function () {
