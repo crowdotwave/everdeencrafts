@@ -614,12 +614,15 @@ ul { margin: 0; padding: 0; list-style: none; }
   to   { opacity: 1; }
 }
 
-.hero__title   { animation: clearIn 1.5s var(--ease-expo) 0.1s both; }
-.hero__sub     { animation: clearIn 1.4s var(--ease-expo) 0.34s both; }
-.hero__actions { animation: clearIn 1.3s var(--ease-expo) 0.5s both; }
-.hero__trees   { animation: standUp 2s var(--ease-expo) both; }
-.hero__canvas  { animation: breatheIn 2.6s ease-out 0.55s both; }
-.hero__scroll  { animation: breatheIn 1.6s ease-out 1.2s both; }
+/* Guarded by a class set in the document head. Without it the hero is
+   simply visible, so the headline never depends on an animation running
+   in order to exist. */
+.anim .hero__title   { animation: clearIn 1.5s var(--ease-expo) 0.1s both; }
+.anim .hero__sub     { animation: clearIn 1.4s var(--ease-expo) 0.34s both; }
+.anim .hero__actions { animation: clearIn 1.3s var(--ease-expo) 0.5s both; }
+.anim .hero__trees   { animation: standUp 2s var(--ease-expo) both; }
+.anim .hero__canvas  { animation: breatheIn 2.6s ease-out 0.55s both; }
+.anim .hero__scroll  { animation: breatheIn 1.6s ease-out 1.2s both; }
 
 /* Memorial cards arrive as a set, so they settle like one. */
 .reveal {
