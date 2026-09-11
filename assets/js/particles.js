@@ -29,12 +29,13 @@
   function sprites() {
     if (!SPRITES) {
       SPRITES = {
-        // warm gold light through leaves
+        // On forest: light added to darkness.
         gold: makeGlow("235, 219, 178", 64),
-        // pale sage motes
         sage: makeGlow("214, 226, 200", 64),
-        // near-white sparks
-        white: makeGlow("255, 253, 245", 64)
+        white: makeGlow("255, 253, 245", 64),
+        // On cream: pollen has to be darker than the paper to exist at all.
+        pollen: makeGlow("124, 146, 104", 64),
+        moss:   makeGlow("86, 110, 78", 64)
       };
     }
     return SPRITES;
@@ -50,6 +51,8 @@
     this.density = this.opts.density || 0.00013;
     this.maxCount = this.opts.max || 190;
     this.parallax = this.opts.parallax !== false;
+    // "light" adds glow to a dark ground; "dark" lays pollen onto a pale one.
+    this.tone = this.opts.tone === "dark" ? "dark" : "light";
     this.particles = [];
     this.w = 0;
     this.h = 0;
@@ -102,8 +105,10 @@
   };
 
   Field.prototype.spawn = function (scatter) {
-    // ~12% are fireflies: larger, warmer, they breathe.
-    var firefly = Math.random() < 0.12;
+    var dark = this.tone === "dark";
+    // ~12% are fireflies: larger, warmer, they breathe. Pale grounds get
+    // none, because a glowing mote on cream just looks like a smudge.
+    var firefly = !dark && Math.random() < 0.12;
     var depth = rand(0.25, 1);      // 0 = far, 1 = near
     return {
       x: rand(-40, this.w + 40),
@@ -114,10 +119,14 @@
       sway: rand(8, 34) * depth,
       swayHz: rand(0.045, 0.16),
       phase: rand(0, Math.PI * 2),
-      alpha: firefly ? rand(0.45, 0.9) : rand(0.12, 0.5) * (0.4 + depth * 0.6),
+      alpha: dark
+        ? rand(0.05, 0.16) * (0.45 + depth * 0.55)
+        : (firefly ? rand(0.45, 0.9) : rand(0.12, 0.5) * (0.4 + depth * 0.6)),
       pulseHz: firefly ? rand(0.18, 0.45) : rand(0.06, 0.18),
       firefly: firefly,
-      sprite: firefly ? "gold" : (Math.random() < 0.22 ? "white" : "sage"),
+      sprite: dark
+        ? (Math.random() < 0.3 ? "moss" : "pollen")
+        : (firefly ? "gold" : (Math.random() < 0.22 ? "white" : "sage")),
       baseX: 0
     };
   };
@@ -136,7 +145,7 @@
     var ctx = this.ctx;
     var sp = sprites();
     ctx.clearRect(0, 0, this.w, this.h);
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = this.tone === "dark" ? "source-over" : "lighter";
 
     for (var i = 0; i < this.particles.length; i++) {
       var p = this.particles[i];
@@ -188,7 +197,7 @@
   Field.prototype.still = function () {
     var ctx = this.ctx, sp = sprites();
     ctx.clearRect(0, 0, this.w, this.h);
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = this.tone === "dark" ? "source-over" : "lighter";
     for (var i = 0; i < this.particles.length; i++) {
       var p = this.particles[i];
       var size = p.r * (p.firefly ? 7 : 5.5);
@@ -209,6 +218,7 @@
       var conf = { density: 0.00013, max: 190, parallax: true };
       if (preset === "sparse") { conf.density = 0.00007; conf.max = 80; }
       if (preset === "band")   { conf.density = 0.00009; conf.max = 90; conf.parallax = false; }
+      if (preset === "pale")   { conf.density = 0.00006; conf.max = 64; conf.parallax = false; conf.tone = "dark"; }
 
       var f = new Field(el, conf);
       fields.push(f);

@@ -87,10 +87,31 @@
       }
       grid.style.display = "";
 
-      list.forEach(function (item) {
-        grid.appendChild(tile(item, state.items.indexOf(item)));
+      list.forEach(function (item, i) {
+        var t = tile(item, state.items.indexOf(item));
+        // Drives the stagger; capped so a long gallery does not end up
+        // waiting seconds for its last row.
+        t.style.setProperty("--i", Math.min(i, 11));
+        grid.appendChild(t);
       });
+
+      settle(grid);
     });
+  }
+
+  /* Let the grid settle in once, when it first comes into view. */
+  function settle(grid) {
+    if (grid.dataset.settled === "1") return;
+    if (!("IntersectionObserver" in window)) { grid.classList.add("is-in"); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.dataset.settled = "1";
+        en.target.classList.add("is-in");
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
+    io.observe(grid);
   }
 
   /* ---- Filters ---- */
