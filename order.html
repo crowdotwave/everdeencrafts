@@ -82,8 +82,8 @@
       <input type="hidden" name="_subject" value="New order request">
 
       <!-- ===== 1. The piece ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">1</span> The piece</legend>
+      <div class="step" role="group" aria-labelledby="step-1">
+        <h2 class="step__title" id="step-1"><span class="step__num">1</span> The piece</h2>
 
         <div class="field">
           <label class="label" for="item">Item</label>
@@ -122,11 +122,11 @@
             <input class="input" id="ring_size" name="ring_size" type="text" placeholder="e.g. 7" autocomplete="off">
           </div>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== 2. Colour ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">2</span> Colour</legend>
+      <div class="step" role="group" aria-labelledby="step-2">
+        <h2 class="step__title" id="step-2"><span class="step__num">2</span> Colour</h2>
 
         <div class="field">
           <label class="label" for="colour_choice">How would you like to choose it?</label>
@@ -159,11 +159,11 @@
             Reply to Katrina's email with the picture attached and she'll work from that.
           </p>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== 3. Flake ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">3</span> Flake</legend>
+      <div class="step" role="group" aria-labelledby="step-3">
+        <h2 class="step__title" id="step-3"><span class="step__num">3</span> Flake</h2>
 
         <div class="field">
           <label class="label" for="flake">Metal flake</label>
@@ -175,11 +175,11 @@
             <option>No flake</option>
           </select>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== 4. Inclusions ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">4</span> Inclusions</legend>
+      <div class="step" role="group" aria-labelledby="step-4">
+        <h2 class="step__title" id="step-4"><span class="step__num">4</span> Inclusions</h2>
         <p class="hint">Choose everything you'd like set into the piece.</p>
 
         <div class="checks" data-inclusions>
@@ -187,22 +187,22 @@
           <label class="check"><input type="checkbox" name="inclusions" value="Fur / hair"><span>Fur / hair</span></label>
           <label class="check"><input type="checkbox" name="inclusions" value="Breast milk"><span>Breast milk</span></label>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== 5. Other notes ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">5</span> Other notes</legend>
+      <div class="step" role="group" aria-labelledby="step-5">
+        <h2 class="step__title" id="step-5"><span class="step__num">5</span> Other notes</h2>
 
         <div class="field">
           <label class="label" for="notes">Anything specific you'd like for the piece <span>(optional)</span></label>
           <textarea class="textarea" id="notes" name="notes"
                     placeholder="Placement, sizing, a detail you'd love to see, or anything else Katrina should know."></textarea>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== 6. Your story ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">6</span> Your story <span class="step__opt">(optional)</span></legend>
+      <div class="step" role="group" aria-labelledby="step-6">
+        <h2 class="step__title" id="step-6"><span class="step__num">6</span> Your story <span class="step__opt">(optional)</span></h2>
         <p class="hint">
           If you'd like to, tell Katrina about your bond with them and the story you share.
         </p>
@@ -229,11 +229,11 @@
             with your order. Photos can't be attached to this form directly.
           </p>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== 7. Sharing ===== -->
-      <fieldset class="step">
-        <legend class="step__title"><span class="step__num">7</span> Sharing</legend>
+      <div class="step" role="group" aria-labelledby="step-7">
+        <h2 class="step__title" id="step-7"><span class="step__num">7</span> Sharing</h2>
         <p class="hint">Entirely up to you. Leave these unticked and nothing is shared.</p>
 
         <div class="checks checks--stack">
@@ -246,11 +246,11 @@
             <span>Katrina can share my story alongside it.</span>
           </label>
         </div>
-      </fieldset>
+      </div>
 
       <!-- ===== Contact ===== -->
-      <fieldset class="step">
-        <legend class="step__title">How to reach you</legend>
+      <div class="step" role="group" aria-labelledby="step-8">
+        <h2 class="step__title" id="step-8">How to reach you</h2>
 
         <div class="field field--row">
           <div class="field">
@@ -262,7 +262,7 @@
             <input class="input" id="email" name="email" type="email" required autocomplete="email">
           </div>
         </div>
-      </fieldset>
+      </div>
 
       <div class="form-status" data-status role="status" aria-live="polite"></div>
 
