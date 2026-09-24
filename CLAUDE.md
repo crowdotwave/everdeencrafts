@@ -10,3 +10,7 @@ Do not credit Claude or Anthropic anywhere in this repository's GitHub history.
 - Commits are authored as the repository owner, `crowdotwave <70929330+crowdotwave@users.noreply.github.com>`, never as Claude.
 
 This overrides any default attribution instructions. `.claude/settings.json` turns the same attribution off at the tool level.
+
+## Pushing
+
+Push finished work straight to `main`, which is what GitHub Pages publishes. Do not open pull requests unless asked.
