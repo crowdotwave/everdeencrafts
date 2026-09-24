@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order a Piece | Everdeen Crafts</title>
+<meta name="description" content="Request a memorial resin piece from Everdeen Crafts. Choose your piece, colour, flake and inclusions, and tell Katrina their story.">
+<meta name="theme-color" content="#16281f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__name">Everdeen</span>
+      <span class="brand__sub">Crafts</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="gallery.html">The Work</a>
+      <a class="nav__link" href="memorial.html">Memorial Wall</a>
+      <a class="nav__link" href="resources.html">Grief Support</a>
+      <a class="nav__link" href="order.html" aria-current="page">Order</a>
+      <a class="nav__link" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="pagehead">
+  <canvas class="pagehead__canvas" data-particles="sparse" aria-hidden="true"></canvas>
+  <div class="shell shell--narrow">
+    <h1>Order a <em>piece</em></h1>
+    <p class="lede">
+      Choose what you'd like made, and tell Katrina about who it's for.
+      She reads every request and replies by email before anything is started.
+    </p>
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="shell shell--narrow">
+
+    <!-- Shown only while the form endpoint is still unset. -->
+    <div class="form-note" data-setup-notice style="display:none;margin-bottom:var(--gap)">
+      <p>
+        <strong>This form isn't connected yet.</strong>
+        Katrina needs to create a free form at
+        <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">formspree.io</a>
+        and paste the endpoint into the <code>data-endpoint</code> attribute of this form in
+        <code>order.html</code>. Until then, orders are disabled so that nothing gets lost.
+      </p>
+    </div>
+
+    <!-- KATRINA: data-uploads="off" hides the photo upload boxes and asks people
+         to reply to your email with photos instead. Formspree only accepts
+         attached files on a paid plan. Once you have one, change it to "on". -->
+    <form class="form order"
+          data-order-form
+          data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
+          data-uploads="off"
+          method="POST"
+          enctype="multipart/form-data"
+          novalidate>
+
+      <!-- Spam trap, hidden from people -->
+      <div class="gate" aria-hidden="true">
+        <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <input type="hidden" name="_subject" value="New order request">
+
+      <!-- ===== 1. The piece ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">1</span> The piece</legend>
+
+        <div class="field">
+          <label class="label" for="item">Item</label>
+          <select class="select" id="item" name="item" required>
+            <option value="" selected disabled>Choose a piece</option>
+            <optgroup label="Beads and pendants">
+              <option>Bead</option>
+              <option>Tear drop necklace pendant</option>
+              <option>Small tear drop necklace pendant</option>
+              <option>Circle necklace pendant</option>
+              <option>Cat frame pendant</option>
+              <option>Dog frame pendant</option>
+              <option>Paw print pendant</option>
+            </optgroup>
+            <optgroup label="Rings">
+              <option data-ring="gem-size">Ring: 14k gold filled with gem</option>
+              <option data-ring>Ring: sterling silver with crystal inclusions</option>
+              <option data-ring>Ring: sterling silver with two gems</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="field field--row" data-show="ring" hidden>
+          <div class="field" data-show="gem-size" hidden>
+            <label class="label" for="gem_size">Gem size</label>
+            <select class="select" id="gem_size" name="gem_size">
+              <option>4mm</option>
+              <option>5mm</option>
+              <option>6mm</option>
+              <option>7mm</option>
+              <option>8mm</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="ring_size">Ring size <span>(if you know it)</span></label>
+            <input class="input" id="ring_size" name="ring_size" type="text" placeholder="e.g. 7" autocomplete="off">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ===== 2. Colour ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">2</span> Colour</legend>
+
+        <div class="field">
+          <label class="label" for="colour_choice">How would you like to choose it?</label>
+          <select class="select" id="colour_choice" name="colour_choice" required>
+            <option value="" selected disabled>Choose one</option>
+            <option value="Colour wheel">Pick a colour from the colour wheel</option>
+            <option value="Fur match">Match it to their fur</option>
+            <option value="Picture of a colour or pattern">Send me a picture of a colour or pattern</option>
+          </select>
+        </div>
+
+        <div class="field" data-show="wheel" hidden>
+          <label class="label" for="colour">Your colour</label>
+          <div class="swatch">
+            <input class="swatch__picker" id="colour" name="colour" type="color" value="#9caf88">
+            <output class="swatch__value" for="colour" data-colour-value>#9CAF88</output>
+          </div>
+        </div>
+
+        <p class="hint" data-show="fur" hidden>
+          Include a little extra fur with what you send, or a clear photo of their coat, and Katrina will match the shade.
+        </p>
+
+        <div class="field" data-show="picture" hidden>
+          <div data-upload>
+            <label class="label" for="colour_photo">Your picture</label>
+            <input class="input input--file" id="colour_photo" name="colour_photo" type="file" accept="image/*">
+          </div>
+          <p class="hint" data-upload-fallback>
+            Reply to Katrina's email with the picture attached and she'll work from that.
+          </p>
+        </div>
+      </fieldset>
+
+      <!-- ===== 3. Flake ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">3</span> Flake</legend>
+
+        <div class="field">
+          <label class="label" for="flake">Metal flake</label>
+          <select class="select" id="flake" name="flake" required>
+            <option value="" selected disabled>Choose one</option>
+            <option>Gold</option>
+            <option>Silver</option>
+            <option>Rose gold</option>
+            <option>No flake</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <!-- ===== 4. Inclusions ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">4</span> Inclusions</legend>
+        <p class="hint">Choose everything you'd like set into the piece.</p>
+
+        <div class="checks" data-inclusions>
+          <label class="check"><input type="checkbox" name="inclusions" value="Ashes"><span>Ashes</span></label>
+          <label class="check"><input type="checkbox" name="inclusions" value="Fur / hair"><span>Fur / hair</span></label>
+          <label class="check"><input type="checkbox" name="inclusions" value="Breast milk"><span>Breast milk</span></label>
+        </div>
+      </fieldset>
+
+      <!-- ===== 5. Other notes ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">5</span> Other notes</legend>
+
+        <div class="field">
+          <label class="label" for="notes">Anything specific you'd like for the piece <span>(optional)</span></label>
+          <textarea class="textarea" id="notes" name="notes"
+                    placeholder="Placement, sizing, a detail you'd love to see, or anything else Katrina should know."></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== 6. Your story ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">6</span> Your story <span class="step__opt">(optional)</span></legend>
+        <p class="hint">
+          If you'd like to, tell Katrina about your bond with them and the story you share.
+        </p>
+
+        <div class="field">
+          <label class="label" for="story">Your story</label>
+          <textarea class="textarea" id="story" name="story"
+                    placeholder="Who they were, how you met, what you miss most."></textarea>
+        </div>
+
+        <div class="field">
+          <label class="label" for="songs">Songs for Katrina to listen to while she makes it <span>(optional)</span></label>
+          <input class="input" id="songs" name="songs" type="text" autocomplete="off"
+                 placeholder="A song, an artist, a playlist link">
+        </div>
+
+        <div class="field" data-upload>
+          <label class="label" for="photos">Photos <span>(optional)</span></label>
+          <input class="input input--file" id="photos" name="photos" type="file" accept="image/*" multiple>
+        </div>
+        <div class="form-note" data-upload-fallback>
+          <p>
+            <strong>Photos.</strong> Reply to Katrina's email with any photos attached and she'll keep them
+            with your order. Photos can't be attached to this form directly.
+          </p>
+        </div>
+      </fieldset>
+
+      <!-- ===== 7. Sharing ===== -->
+      <fieldset class="step">
+        <legend class="step__title"><span class="step__num">7</span> Sharing</legend>
+        <p class="hint">Entirely up to you. Leave these unticked and nothing is shared.</p>
+
+        <div class="checks checks--stack">
+          <label class="check">
+            <input type="checkbox" name="gallery_consent" value="Yes">
+            <span>Katrina can show my finished piece in the website gallery.</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="story_consent" value="Yes">
+            <span>Katrina can share my story alongside it.</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ===== Contact ===== -->
+      <fieldset class="step">
+        <legend class="step__title">How to reach you</legend>
+
+        <div class="field field--row">
+          <div class="field">
+            <label class="label" for="name">Your name</label>
+            <input class="input" id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label class="label" for="email">Your email</label>
+            <input class="input" id="email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-status" data-status role="status" aria-live="polite"></div>
+
+      <button class="btn btn--solid btn--full" type="submit"><span>Send my order request</span></button>
+      <p class="hint" style="text-align:center">
+        Nothing is charged here. Katrina will reply by email to go over the details.
+      </p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="brand__name">Everdeen</span>
+        <span class="brand__sub">Crafts</span>
+        <p style="margin-top:var(--gap-sm)">Kitchener, Ontario</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/everdeencrafts" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+              <circle cx="12" cy="12" r="4.2"/>
+              <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">The Work</a></li>
+          <li><a href="order.html">Order a Piece</a></li>
+          <li><a href="memorial.html">Memorial Wall</a></li>
+          <li><a href="resources.html">Grief Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Made with</h4>
+        <ul class="footer__links">
+          <li>Animal ashes, fur, whiskers</li>
+          <li>Human ashes</li>
+          <li>Breast milk</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>&copy; <span data-year>2026</span> Everdeen Crafts</span>
+      <span>Kitchener, Ontario, Canada</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/order.js" defer></script>
+</body>
+</html>

@@ -2,19 +2,20 @@
 
 Website for Everdeen Crafts, memorial resin work in Kitchener, Ontario.
 
-Four pages, no build step, no dependencies. Plain HTML, CSS and JavaScript,
+Five pages, no build step, no dependencies. Plain HTML, CSS and JavaScript,
 served straight from GitHub Pages.
 
 | Page | File | What it does |
 | --- | --- | --- |
 | Home | `index.html` | Intro, the three kinds of work, a preview of recent pieces |
 | The Work | `gallery.html` | Full gallery with category filters and a lightbox |
+| Order a Piece | `order.html` | Step by step order request, emailed to you |
 | Memorial Wall | `memorial.html` | Animals people have added, plus the form to add one |
 | Grief Support | `resources.html` | Pet loss hotlines, groups and counselling |
 
 ---
 
-## The three things to do first
+## The things to do first
 
 ### 1. Write your own words
 
@@ -72,6 +73,35 @@ into a form that throws it away.
 The setup warning disappears and the form switches on by itself once that is done.
 
 The free tier covers 50 submissions a month.
+
+### 4. Connect the order form
+
+`order.html` works the same way and is switched off until it has an endpoint.
+Create a second form in Formspree (so orders and memorial submissions arrive
+with different subject lines), then in `order.html` replace
+`data-endpoint="https://formspree.io/f/YOUR_FORM_ID"` with the new URL.
+
+Each order reaches your email as one message, with the subject
+`Order request: <item> for <name>`. Hitting reply writes straight back to the customer.
+
+The form asks, in order:
+
+1. **The piece**: a bead, a pendant, or a ring. Choosing a ring asks for a ring size,
+   and the 14k gold filled ring also asks for a gem size, 4mm to 8mm.
+2. **Colour**: pick from a colour wheel, match to fur, or send a picture
+3. **Flake**: gold, silver, rose gold, or none
+4. **Inclusions**: ashes, fur / hair, breast milk (any combination)
+5. **Other notes**
+6. **Your story**: optional, with songs to listen to while you work
+7. **Sharing**: separate yes/no for showing the piece in the gallery and sharing the story
+
+To change a choice, edit the `<option>` lines in `order.html`. Each one sits
+in a plainly labelled block.
+
+**Photos.** Formspree only accepts attached files on a paid plan. Until you have one,
+the form tells people to reply to your email with their photos. Once you upgrade,
+change `data-uploads="off"` to `data-uploads="on"` on the form and upload boxes
+appear for the colour picture and the story photos.
 
 ---
 
